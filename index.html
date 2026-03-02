@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Working Quote Application</h1>
+<body class="[font-family:'Poppins',sans-serif]">
+    <div class="w-full h-screen border border-2 flex">
+        <div class="w-1/2 h-full bg-green-300 flex justify-center items-center">
+            <div class="w-[70%] h-[435px] bg-white rounded-xl shadow-lg flex justify-center items-center  flex-col">
+                <div class=" w-[90%] h-auto py-5 px-2">
+                <h1 class="text-start mb-2 text-xl text-gray-600/80">Create a Quote</h1>
+                <form id="addQuote" class="flex flex-col  w-full">
+                    <label for="quoteIput" class="mb-1 ml-1">Quote</label>
+                    <textarea id="quoteInput" rows="4"  class="border w-full px-2 py-2 rounded-lg mb-3 border outline-none focus:ring-1 ring-gray-400" placeholder="Enter your quote here...."></textarea>
+                    <label for="Authore_Name" class="mb-1 ml-1">Authore Name</label>
+                    <input type="text" class="border w-full px-2 py-2 rounded-lg mb-3 border outline-none focus:ring-1 ring-gray-400" placeholder="Enter the autor's name">
+                    <label for="category"class="mb-1 ml-1" >Category</label>
+                    <select class="border w-full px-2 py-2 rounded-lg mb-3 border outline-none focus:ring-1 ring-gray-400" >
+                        <option value="">Select Category</option>
+                        <option value="">Motivation</option>
+                        <option value="">Study</option>
+                        <option value="">General</option>
+                    </select>
+                    <button type="submit" class="bg-purple-500/70 hover:bg-purple-500/80 py-2 w-[120px] mx-auto rounded-lg text-white mt-1 active:scale-95">Add Quote</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/2 h-full bg-orange-300"></div>
+    </div>
 </body>
 </html>
