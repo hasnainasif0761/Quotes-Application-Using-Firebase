@@ -6,6 +6,7 @@ import {
     collection,
     doc,
     getDocs,
+    updateDoc,
     serverTimestamp
 } from './fireConfig.js';
 
@@ -44,16 +45,16 @@ async function addQuote(e) {
 async function getQuote() {
     const querySnapshot = await getDocs(quoteCollRef);
     querySnapshot.forEach((doc) => {
-        document.getElementById('quoteContainer').innerHTML = `
-    <h1 class="ml-7 text-xl text-gray-600 mb-2">All Quotes</h1>
+        let data = doc.data();
+        document.getElementById('quoteContainer').innerHTML += `
     <div class="w-[90%] h-20 border pl-[10px] rounded-lg mx-auto mt-2 flex justify-between items-center shadow-lg">
                     <div class="w-[380px]  py-2">   
-                        <p class="text-sm mb-[2px]">"Believe you can add you're halfway there."</p>
-                        <span class="text-sm">-- Theodore Roosevelt</span>
-                        <span class="text-sm bg-purple-400/60 px-[7px] rounded-full">Motivation</span>
+                        <p class="text-sm mb-[2px]">"${data.text}"</p>
+                        <span class="text-sm">-- ${data.autherName}</span>
+                        <span class="text-sm bg-purple-400/60 px-[7px] rounded-full">${data.category}</span>
                     </div>
                     <div class="px-3 flex gap-2 py-2">
-                        <i class="ri-pencil-fill bg-gray-300/70 hover:bg-gray-300/80 px-[7px] py-[3px] rounded-lg text-black cursor-pointer"></i>
+                        <i onclick="editfunc(${doc.id})" class="ri-pencil-fill bg-gray-300/70 hover:bg-gray-300/80 px-[7px] py-[3px] rounded-lg text-black cursor-pointer"></i>
                         <i class="ri-delete-bin-line bg-red-600/80 hover:bg-red-600/90 px-[7px] py-[3px] rounded-lg text-white cursor-pointer"></i>
                     </div>
                     <div></div>
@@ -62,3 +63,4 @@ async function getQuote() {
     })
 }
 getQuote()
+
