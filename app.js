@@ -7,6 +7,7 @@ import {
     doc,
     getDocs,
     updateDoc,
+    deleteDoc,
     serverTimestamp
 } from './fireConfig.js';
 
@@ -75,7 +76,7 @@ async function getQuote() {
         p.textContent = `"${data.text}"`;
         let spanAuther = document.createElement('span');
         spanAuther.classList = 'ml-2 text-sm';
-        spanAuther.textContent = data.autherName;
+        spanAuther.textContent = ` --${data.autherName}`;
         let category = document.createElement('span');
         category.classList = 'text-sm bg-purple-400/60 px-[7px] ml-2 rounded-full';
         category.textContent = data.category;
@@ -91,6 +92,11 @@ async function getQuote() {
 
         let deleteBtn = document.createElement('i');
         deleteBtn.classList = 'ri-delete-bin-line bg-red-600/80 hover:bg-red-600/90 px-[7px] py-[3px] rounded-lg text-white cursor-pointer';
+
+        deleteBtn.addEventListener('click',()=>{
+            deleteQuote(doc.id)
+        })
+
 
         div2.appendChild(p)
         div2.appendChild(spanAuther);
@@ -112,4 +118,13 @@ async function editQuote(id,oldata){
     
     currenEditId = id;
 
+}
+
+async function deleteQuote(id) {
+    if(confirm('Are your sure you want to delete this Quote')){
+        await  deleteDoc(doc(db,'Quotes_App',id))
+    }else{
+        console.log('Quote is not delete');
+    }
+    getQuote();
 }
