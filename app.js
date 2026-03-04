@@ -54,7 +54,6 @@ async function addQuote(e) {
         console.log("Error is=>" + error.message)
         document.getElementById('quoteInput').value = '';
         document.getElementById('author_name').value = '';
-        document.getElementById('category').value = '';
     }
 }
 
