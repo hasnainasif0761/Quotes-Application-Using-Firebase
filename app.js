@@ -117,6 +117,7 @@ async function editQuote(id,oldata){
     
     currenEditId = id;
 
+    document.getElementById('changeName').innerText = 'Update Now'
 }
 
 async function deleteQuote(id) {
