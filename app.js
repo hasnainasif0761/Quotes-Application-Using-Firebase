@@ -67,23 +67,23 @@ async function getQuote() {
         let quoteCont = document.getElementById('quoteContainer');
         let data = doc.data();
         let div1 = document.createElement('div');
-        div1.classList = ('w-[90%] h-20 border pl-[10px] rounded-lg mx-auto mt-2 flex justify-between items-center shadow-lg');
+        div1.className = ('w-[90%] h-20 border pl-[10px] rounded-lg mx-auto mt-2 flex justify-between items-center shadow-sm border');
         let div2 = document.createElement('div');
-        div2.classList = 'w-[380px]  py-2';
+        div2.className = 'w-[380px]  py-2';
         let p = document.createElement('p');
-        p.classList = 'text-sm mb-[2px]'
+        p.className = 'text-sm mb-[2px]'
         p.textContent = `"${data.text}"`;
         let spanAuther = document.createElement('span');
-        spanAuther.classList = 'ml-2 text-sm';
+        spanAuther.className = 'ml-2 text-sm';
         spanAuther.textContent = ` --${data.autherName}`;
         let category = document.createElement('span');
-        category.classList = 'text-sm bg-purple-400/60 px-[7px] ml-2 rounded-full';
+        category.className = 'text-sm bg-purple-400/60 px-[7px] ml-2 rounded-full';
         category.textContent = data.category;
         let div3 = document.createElement('div');
-        div3.classList = 'px-3 flex gap-2 py-2';
+        div3.className = 'px-3 flex gap-2 py-2';
 
         let editBtn = document.createElement('i');
-        editBtn.classList = 'ri-pencil-fill bg-gray-300/70 hover:bg-gray-300/80 px-[7px] py-[3px] rounded-lg text-black cursor-pointer';
+        editBtn.className = 'ri-pencil-fill bg-gray-300/70 hover:bg-gray-300/80 px-[7px] py-[3px] rounded-lg text-black cursor-pointer';
 
         editBtn.addEventListener('click',()=>{
             editQuote(doc.id,data);
@@ -122,8 +122,8 @@ async function editQuote(id,oldata){
 async function deleteQuote(id) {
     if(confirm('Are your sure you want to delete this Quote')){
         await  deleteDoc(doc(db,'Quotes_App',id))
+        getQuote();
     }else{
         console.log('Quote is not delete');
     }
-    getQuote();
 }
